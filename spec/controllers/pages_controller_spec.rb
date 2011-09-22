@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe PagesController do
   render_views
+  
+  before(:each) do
+    #This will execute before each test case and check that the base title is Ruby on Rails
+    @base_title = "Ruby on Rails"
+  end
 
   describe "GET 'home'" do
     it "should be successful" do
@@ -11,7 +16,7 @@ describe PagesController do
     
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title", :content => "Ruby on Rails | Home")
+      response.should have_selector("title", :content => @base_title + " | Home")
   end
 end
 
@@ -23,7 +28,7 @@ end
       
       it "should have the right title" do
         get 'contact'
-        response.should have_selector("title", :content => "Ruby on Rails | Contact")
+        response.should have_selector("title", :content => @base_title + " | Contact")
     end
   end
   
@@ -35,7 +40,19 @@ end
       
       it "should have the right title" do
         get 'about'
-        response.should have_selector("title", :content => "Ruby on Rails | About")
+        response.should have_selector("title", :content => @base_title + " | About")
+    end
+  end
+  
+    describe "GET 'help'" do
+    it "should be successful" do
+      get 'about'
+      response.should be_success
+    end
+      
+      it "should have the right title" do
+        get 'help'
+        response.should have_selector("title", :content => @base_title + " | Help")
     end
   end
 end
