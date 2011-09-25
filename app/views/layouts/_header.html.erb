@@ -1,0 +1,13 @@
+	<header>
+	<%-# Define a local variable called logo and set the image to logo.png -%>
+	<% logo = image_tag("logo.png", :alt => "Sample App", :class => "round") %>
+	<%-# Make the logo a link to the home page -%>
+	<%= link_to logo, root_path %>
+	<nav class="round">
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Help", help_path %></li>
+			<li><%= link_to "Sign In", '#' %></li>
+		</ul>
+	</nav>
+	</header>
